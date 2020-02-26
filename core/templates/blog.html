@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Projects{% endblock %}
+
+{%block content%}
+	
+	{% with ''|center:1 as range %}
+	{% for _ in range %}
+		<div class="card w-100" style="margin-bottom: 2rem">
+			<div class="card-header">
+				<strong>{% lorem 1 w random%}</strong>
+			</div>
+	  		<div class="card-body">
+	    		<p class="card-text">{% filter truncatewords:60 %}{% lorem 5 p random%}{% endfilter %}</p>
+	  			
+	  		</div>
+	  		<div class="card-footer text-muted">
+	  			<a href="#" class="btn btn-dark">
+		    		Read More
+		    		<i class="fa fa-w fa-arrow-right"></i>
+	    		</a>
+	    		<a href="#" class="btn btn-dark">
+		    		Comment
+		    		<i class="fa fa-w fa-comments"></i>
+	    		</a>
+	  		</div>
+		</div>
+	{% endfor %}
+	{% endwith %}
+	
+{% endblock %}
