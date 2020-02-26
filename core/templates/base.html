@@ -1,0 +1,24 @@
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block title %}{% endblock %}</title>
+	{% bootstrap_css %}
+	{% bootstrap_javascript jquery='full' %}
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style type="text/css">
+		body {
+			min-height: 75rem;
+			padding-top: 4.5rem;
+		}
+	</style>
+</head>
+<body>
+	{% include "navbar.html" %}
+	<main class="container" role="main">
+		<div class="jumbotron">
+			{% block content %}{% endblock %}
+		</div>
+	</main>
+</body>
+</html>
