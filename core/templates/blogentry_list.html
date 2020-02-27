@@ -12,7 +12,7 @@
 		<strong>{{ entry.title }}</strong>
 	</div>
 		<div class="card-body">
-		<p class="card-text">{% filter truncatewords:60 %}{{ entry.entry }}{% endfilter %}</p>
+		<p class="card-text">{% filter truncatewords:60 %}{{ entry.entry|linebreaks }}{% endfilter %}</p>
 			
 		</div>
 		<div class="card-footer text-muted">
