@@ -20,7 +20,8 @@ from core.views import views
 urlpatterns = [
 	path('', views.HomeView.as_view(), name="home"),
 	path('projects/', views.ProjectsView.as_view(), name="projects"),
-	path('blog/', views.BlogView.as_view(), name="blog"),
+	path('blog/', views.BlogListView.as_view(), name="blog"),
+	path('blog/<slug:pk>/', views.BlogDetailView.as_view(), name='blog_detail')
 ]
 
 urlpatterns += [
