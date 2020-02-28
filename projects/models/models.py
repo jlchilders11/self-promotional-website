@@ -7,5 +7,5 @@ class Project(models.Model):
 	last_update = models.DateField()
 	read_me = models.TextField()
 	url = models.URLField()
-	github_id = models.UUIDField()
+	github_id = models.UUIDField(primary_key=True)
 

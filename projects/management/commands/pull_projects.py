@@ -14,11 +14,13 @@ class Command(BaseCommand):
 
 		for repo in data:
 			Project.objects.update_or_create(
-				title=repo['name'],
-				last_update=arrow.get(repo['updated_at']).date(),
-				read_me=repo['description'],
-				url=repo['html_url'],
-				github_id=repo['id']
+				github_id=repo['id'],
+				defaults={
+					'title':repo['name'].replace("-"," "),
+					'last_update':arrow.get(repo['updated_at']).date(),
+					'read_me':repo['description'],
+					'url':repo['html_url'],
+				}
 			)
 
 		self.stdout.write(self.style.SUCCESS(data[0]['id']))
