@@ -6,28 +6,26 @@
 {%block content%}
 	
 	<div>
-	{% with ''|center:15 as range %}
-	{% for _ in range %}
+	{% for object in object_list %}
 	{% if forloop.counter0|divisibleby:"3" %}
 	</div>
 	<div class="card-deck" style="padding-bottom: 2rem">
 	{% endif %}
 		<div class="card">
 			<div class="card-header">
-				<strong>{% lorem 1 w random%}</strong>
+				<strong>{{object.title}}</strong>
 			</div>
 	  		<div class="card-body">
-	    		<p class="card-text">{% lorem 20 w random%}</p>
+	    		<p class="card-text">{{object.read_me}}</p>
 	  		</div>
 	  		<div class="card-footer text-muted">
-	  			<a href="#" class="btn btn-dark">
+	  			<a href="{{object.url}}" target='_' class="btn btn-dark">
 	    			<i class="fa fa-w fa-github"></i>
 	    		GitHub
 	    		</a>
-	    		2 Days Ago
+	    		{{object.last_updated}}
 	  		</div>
 		</div>
 	{% endfor %}
-	{% endwith %}
 	
 {% endblock %}
