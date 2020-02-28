@@ -2,8 +2,3 @@
 
 from django.db import models
 
-class BlogEntry(models.Model):
-	title = models.CharField(max_length=30)
-	entry = models.TextField()
-	visible = models.BooleanField(default=False)
-	publish_date = models.DateField(auto_now_add=True)

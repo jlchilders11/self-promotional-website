@@ -5,8 +5,11 @@ from django.views.generic.detail import DetailView
 
 from ..models import models
 
-class HomeView(TemplateView):
-	template_name = 'home.html'
+class BlogDetailView(DetailView):
+	model = models.BlogEntry
+	template_name = 'blog.html'
 
-class ProjectsView(TemplateView):
-	template_name = 'projects.html'
+class BlogListView(ListView):
+	model = models.BlogEntry
+	paginate_by = 10
+	template_name = 'blogentry_list.html'
