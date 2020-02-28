@@ -1,18 +1,12 @@
 {% extends "base.html" %}
-{% load static %}
 
-{% block title %}Projects{% endblock %}
+{% block title %}Blog - {{object.title}}{% endblock %}
 
 {%block content%}
-	
-<a href="{% url 'blog:blog' %}" class="btn btn-dark">
-	<i class="fa fa-w fa-arrow-left"></i>
-	Back
-</a>
 
-<div class="card w-100" style="margin-top: 2rem">
+<div class="card w-100">
 	<div class="card-header">
-		<strong>{{ object.title }}</strong>
+		<h1><strong>{{ object.title }}</strong></h1>
 	</div>
 		<div class="card-body">
 		<p class="card-text">{{ object.entry|linebreaks }}</p>
