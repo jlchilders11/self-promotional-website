@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Blog{% endblock %}
+
+{%block content%}
+	
+{% for entry in object_list %}
+<div class="card w-100" style="margin-bottom: 2rem">
+	<div class="card-header">
+		<strong>{{ entry.title }}</strong>
+	</div>
+		<div class="card-body">
+		<p class="card-text">{% filter truncatewords:60 %}{{ entry.entry|linebreaks }}{% endfilter %}</p>
+			
+		</div>
+		<div class="card-footer text-muted">
+			<a href="{% url 'blog:blog_detail' pk=entry.pk %}" class="btn btn-dark">
+    		Read More
+    		<i class="fa fa-w fa-arrow-right"></i>
+		</a>
+		<a href="#" class="btn btn-dark">
+    		Comment
+    		<i class="fa fa-w fa-comments"></i>
+		</a>
+		</div>
+</div>
+{% endfor %}
+	
+{% endblock %}
