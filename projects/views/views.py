@@ -6,3 +6,6 @@ from ..models import models
 class ProjectsView(ListView):
 	model = models.Project
 	template_name = 'projects.html'
+
+	def get_queryset(self):
+		return super().get_queryset().order_by('-last_update')

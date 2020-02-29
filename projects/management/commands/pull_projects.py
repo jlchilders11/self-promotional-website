@@ -17,7 +17,7 @@ class Command(BaseCommand):
 				github_id=repo['id'],
 				defaults={
 					'title':repo['name'].replace("-"," "),
-					'last_update':arrow.get(repo['updated_at']).date(),
+					'last_update':arrow.get(repo['updated_at']).datetime,
 					'read_me':repo['description'],
 					'url':repo['html_url'],
 				}
