@@ -1,9 +1,17 @@
 {% extends "base.html" %}
 {% load static %}
+{% load markdown_deux_tags %}
 
 {% block title %}Blog{% endblock %}
 
 {%block content%}
+{% if request.user.is_staff %}
+<a href="{% url 'admin:blog_blogentry_add' %}" target="_blank" class="btn btn-dark">
+	Add Entry
+	<i class="fa fa-w fa-plus"></i>
+</a>
+<hr>
+{% endif %}
 	
 {% for entry in object_list %}
 <div class="card w-100" style="margin-bottom: 2rem">
@@ -11,7 +19,7 @@
 		<strong>{{ entry.title }}</strong>
 	</div>
 		<div class="card-body">
-		<p class="card-text">{% filter truncatewords:60 %}{{ entry.entry|linebreaks }}{% endfilter %}</p>
+		<p class="card-text">{{ entry.entry|markdown|truncatewords:60 }}</p>
 			
 		</div>
 		<div class="card-footer text-muted">
@@ -23,6 +31,12 @@
     		Comment
     		<i class="fa fa-w fa-comments"></i>
 		</a>
+		{% if request.user.is_staff %}
+		<a href="{% url 'admin:blog_blogentry_change' entry.pk %}" target="_blank" class="btn btn-dark float-right">
+    		Edit Page
+    		<i class="fa fa-w fa-pencil-square-o"></i>
+		</a>
+		{% endif %}
 		</div>
 </div>
 {% endfor %}

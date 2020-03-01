@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'projects',
     'core',
     'bootstrap4',
+    'markdown_deux'
 ]
 
 MIDDLEWARE = [
