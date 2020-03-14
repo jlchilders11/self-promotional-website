@@ -1,54 +1,75 @@
 <template>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-	<a class="navbar-brand" href="#">
-		Jeremy Childers
-	</a>
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	</button>
-	<div class="collapse navbar-collapse" id="navbarNav">
-		<ul class="navbar-nav">
-			<li class="nav-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
-				<a class="nav-link" href="">
-					<i class="fa fa-fw fa-home"></i> 
-					Home 
-					<span class="sr-only">(current)</span>
-				</a>
-			</li>
-			<li class="nav-item {% if request.resolver_match.url_name == 'projects' %}active{% endif %}">
-				<a class="nav-link" href="{% url 'projects' %}">
-					<i class="fa fa-fw fa-flask"></i> 
-					Projects
-			</a>
-			</li>
-			<li class="nav-item {% if request.resolver_match.namespace == 'blog' %}active{% endif %}">
-				<a class="nav-link" href="{% url 'blog:blog' %}">
-					<i class="fa fa-fw fa-feed"></i> 
-					Blog
-			</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="https://github.com/jlchilders11" target="_blank">
-					<i class="fa fa-fw fa-github"></i> 
-					Github
-			</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="https://www.linkedin.com/in/jeremy-childers-2270681a3/">
-					<i class="fa fa-fw fa-linkedin"></i> 
-					LinkedIn
-			</a>
-			</li>
-		</ul>
-	</div>
-</nav>
+	<b-navbar toggleable="lg" type="dark" variant="dark" fixed=top>
+		<b-navbar-brand>
+			Jeremy Childers
+		</b-navbar-brand>
+		<button
+			class="navbar-toggler"
+			type="button"
+			data-toggle="collapse"
+			data-target="#navbarNav"
+			aria-controls="navbarNav"
+			aria-expanded="false"
+			aria-label="Toggle navigation"
+		>
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<b-navbar-nav>
+				<li
+					class="nav-item"
+				>
+					<router-link to="/" class="nav-link">
+						<i class="fa fa-fw fa-home"></i>
+						Home
+						<span class="sr-only">(current)</span>
+					</router-link>
+				</li>
+				<li
+					class="nav-item"
+				>
+					<router-link class="nav-link" to="projects">
+						<i class="fa fa-fw fa-flask"></i>
+						Projects
+					</router-link>
+				</li>
+				<li
+					class="nav-item"
+				>
+					<a class="nav-link" href="{% url 'blog:blog' %}">
+						<i class="fa fa-fw fa-feed"></i>
+						Blog
+					</a>
+				</li>
+				<li class="nav-item">
+					<a
+						class="nav-link"
+						href="https://github.com/jlchilders11"
+						target="_blank"
+					>
+						<i class="fa fa-fw fa-github"></i>
+						Github
+					</a>
+				</li>
+				<li class="nav-item">
+					<a
+						class="nav-link"
+						href="https://www.linkedin.com/in/jeremy-childers-2270681a3/"
+					>
+						<i class="fa fa-fw fa-linkedin"></i>
+						LinkedIn
+					</a>
+				</li>
+			</b-navbar-nav>
+		</div>
+	</b-navbar>
 </template>
 
 <script>
 export default {
-  name: 'Navbar',
-  props: {
-    msg: String
-  }
-}
+	name: "Navbar",
+	props: {
+		msg: String
+	}
+};
 </script>
