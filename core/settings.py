@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+FRONTEND_DIR = os.path.join(BASE_DIR, 'website')
+
 
 # Application definition
 
@@ -57,7 +59,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(FRONTEND_DIR, 'dist')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -122,3 +124,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+  os.path.join(FRONTEND_DIR, 'dist/static'),
+]
+
+# Directory where Django static files are collected
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
