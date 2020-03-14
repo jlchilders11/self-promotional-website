@@ -1,4 +1,4 @@
-{% load static %}
+<template>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 	<a class="navbar-brand" href="#">
 		Jeremy Childers
@@ -9,7 +9,7 @@
 	<div class="collapse navbar-collapse" id="navbarNav">
 		<ul class="navbar-nav">
 			<li class="nav-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
-				<a class="nav-link" href="{% url 'home' %}">
+				<a class="nav-link" href="">
 					<i class="fa fa-fw fa-home"></i> 
 					Home 
 					<span class="sr-only">(current)</span>
@@ -42,3 +42,13 @@
 		</ul>
 	</div>
 </nav>
+</template>
+
+<script>
+export default {
+  name: 'Navbar',
+  props: {
+    msg: String
+  }
+}
+</script>
