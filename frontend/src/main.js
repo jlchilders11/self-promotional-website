@@ -2,7 +2,7 @@ import Vue from "vue/dist/vue.js";
 import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
-import {BootstrapVue} from 'bootstrap-vue'
+import { BootstrapVue } from 'bootstrap-vue'
 Vue.use(BootstrapVue)
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -10,22 +10,24 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import Navbar from "./components/Navbar.vue";
 import Home from "./components/Home.vue";
 import Projects from "./components/Projects.vue";
+import Blog from "./components/Blog.vue";
 
 Vue.config.productionTip = false;
 
 const routes = [
-	{ path: "/", component: Home },
-	{ path: "/projects/", component: Projects }
+    { path: "/", component: Home },
+    { path: "/projects/", component: Projects },
+    { path: "/blog/", component: Blog }
 ];
 
 const router = new VueRouter({
-	linkExactActiveClass: 'active',
-	routes: routes
+    linkExactActiveClass: 'active',
+    routes: routes
 });
 
 new Vue({
-	router,
-	template: `
+    router,
+    template: `
 	<div>
 	<Navbar />
     <main class="container" role="main">
@@ -33,7 +35,7 @@ new Vue({
 	</main>
 	</div>
   `,
-	components: {
-		Navbar
-	}
+    components: {
+        Navbar
+    }
 }).$mount("#app");
