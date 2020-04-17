@@ -5,7 +5,7 @@
                 <strong>{{ entry.title }}</strong>
             </div>
             <div class="card-body">
-                <p class="card-text">{{ entry.body}}</p>
+                <p class="card-text">{{ entry.body | truncate }}</p>
             </div>
             <div class="card-footer text-muted">
                 <a href="" class="btn btn-dark">
@@ -34,6 +34,13 @@ export default {
         axios
             .get('http://jsonplaceholder.typicode.com/posts')
             .then(response => (this.entries = response.data))
+    },
+    filters: {
+        truncate: function(value) {
+            if (!value) return ''
+            value = value.substring(0, 60)
+            return value
+        }
     }
 };
 </script>
