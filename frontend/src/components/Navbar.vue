@@ -19,10 +19,9 @@
 				<li
 					class="nav-item"
 				>
-					<router-link to="/" class="nav-link">
+					<router-link class="nav-link" to="/">
 						<i class="fa fa-fw fa-home"></i>
-						Home
-						<span class="sr-only">(current)</span>
+						Projects
 					</router-link>
 				</li>
 				<li
@@ -68,8 +67,5 @@
 <script>
 export default {
 	name: "Navbar",
-	props: {
-		msg: String
-	}
 };
 </script>
