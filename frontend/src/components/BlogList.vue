@@ -13,8 +13,9 @@
                     <i class="fa fa-w fa-arrow-right"></i>
                 </router-link>
                 <router-link class="btn btn-dark" :to='`/blog/${entry.id}/`'>
-                    Comment
+                    Comments
                     <i class="fa fa-w fa-comments"></i>
+                    {{entry.comments.length}}
                 </router-link>
             </div>
         </div>
@@ -32,7 +33,7 @@ export default {
     },
     mounted() {
         axios
-            .get('http://localhost:8000/blog/')
+            .get('http://localhost:8000/api/blog/')
             .then(response => (this.entries = response.data))
     },
     filters: {

@@ -19,6 +19,17 @@
                 </a>
             </div>
         </div>
+        <div v-for="comment in entry.comments" :key="comment.id" class="card w-100 mt-3">
+            <div class="card-header">
+                {{comment.user_name}}:
+            </div>
+            <div class="card-body">
+                {{comment.comment}}
+            </div>
+            <div class="card-footer">
+                {{comment.publishdate_date}}
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -33,7 +44,7 @@ export default {
     },
     mounted() {
         axios
-            .get('http://localhost:8000/blog/' + this.$route.params.id + '/')
+            .get('http://localhost:8000/api/blog/' + this.$route.params.id + '/')
             .then(response => (this.entry = response.data))
     },
 };
