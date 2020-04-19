@@ -5,8 +5,8 @@
                 <h3 style="text-align: center"><strong>{{ entry.title }}</strong></h3>
             </div>
             <div class="card-body">
-                <p class="card-text">
-                    <pre style="white-space: pre-wrap;">{{ entry.entry }}</pre>
+                <p class="card-text" style="white-space: pre-wrap;">
+                    {{ entry.entry }}
                 </p>
             </div>
             <div class="card-footer text-muted">
@@ -18,6 +18,9 @@
                     <i class="fa fa-w fa-comments"></i>
                 </a>
             </div>
+        </div>
+        <div v-if="new_comment">
+
         </div>
         <div v-for="comment in entry.comments" :key="comment.id" class="card w-100 mt-3">
             <div class="card-header">
@@ -39,7 +42,8 @@ export default {
     name: "BlogDetail",
     data: function() {
         return {
-            entry: null
+            entry: null,
+            new_comment: false,
         }
     },
     mounted() {

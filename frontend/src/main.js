@@ -19,26 +19,24 @@ import BlogList from "./components/BlogList.vue";
 
 Vue.config.productionTip = false;
 
-const routes = [
-    {
+const routes = [{
         path: '/',
         redirect: '/home',
     },
-    { 
-        path: "/home", 
+    {
+        path: "/home",
         component: Home,
         name: 'Home'
     },
-    { 
-        path: "/projects/", 
+    {
+        path: "/projects/",
         component: Projects,
         name: 'Projects'
     },
     {
         path: "/blog/",
         component: Blog,
-        children: [
-            {
+        children: [{
                 path: '',
                 component: BlogList,
                 name: 'Blog',
@@ -56,6 +54,9 @@ const router = new VueRouter({
     mode: 'history',
     linkActiveClass: "active",
     routes: routes,
+    scrollBehavior() {
+        return { x: 0, y: 0 }
+    },
 });
 
 new Vue({
