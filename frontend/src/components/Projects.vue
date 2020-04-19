@@ -9,11 +9,11 @@
                     <p class="card-text">{{project.description}}</p>
                 </div>
                 <div class="card-footer text-muted">
-                    <a :href="project.html_url" target="_" class="btn btn-dark">
+                    <a :href="project.html_url" target="_" class="btn btn-dark mr-2">
                         <i class="fa fa-w fa-github"></i>
                         GitHub
                     </a>
-                    {{project.updated_at}}
+                    {{project.updated_at | moment }}
                 </div>
             </div>
         </div>
@@ -21,6 +21,7 @@
 </template>
 <script>
 import axios from 'axios';
+import moment from 'moment';
 
 export default {
     name: "Projects",
@@ -32,7 +33,7 @@ export default {
     mounted() {
         axios
             .get('https://api.github.com/users/jlchilders11/repos')
-            .then(response => (this.projects = response.data))
+            .then(response => (this.projects = response.data.reverse()))
 
     },
     filters: {
@@ -40,6 +41,9 @@ export default {
             if (!value) return ''
             value = value.replace(/-/g, ' ');
             return value
+        },
+        moment: function(value) {
+            return moment(value).format('MM/D/YYYY');
         }
     }
 };

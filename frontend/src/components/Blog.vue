@@ -5,10 +5,10 @@
                 <strong>{{ entry.title }}</strong>
             </div>
             <div class="card-body">
-                <p class="card-text">{{ entry.body | truncate }}</p>
+                <p class="card-text">{{ entry.entry | truncate }}</p>
             </div>
             <div class="card-footer text-muted">
-                <a href="" class="btn btn-dark">
+                <a href="" class="btn btn-dark mr-2">
                     Read More
                     <i class="fa fa-w fa-arrow-right"></i>
                 </a>
@@ -32,7 +32,7 @@ export default {
     },
     mounted() {
         axios
-            .get('http://jsonplaceholder.typicode.com/posts')
+            .get('http://localhost:8000/blog/')
             .then(response => (this.entries = response.data))
     },
     filters: {

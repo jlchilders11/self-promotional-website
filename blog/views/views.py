@@ -1,17 +1,26 @@
 '''This is where the views for this application live. All of them are class based, so that they are futureproofed and hotswappable'''
-from django.views.generic.list import ListView
-from django.views.generic.detail import DetailView
+from ..models.models import BlogEntry
+from rest_framework import viewsets
+from rest_framework import permissions
+from ..serializers import BlogSerializer
 
-from ..models import models
 
-class BlogDetailView(DetailView):
-	model = models.BlogEntry
-	template_name = 'blog.html'
+class BlogViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows blogs to be viewed or edited.
+    """
+    queryset = BlogEntry.objects.all().order_by('-publish_date')
+    serializer_class = BlogSerializer
 
-class BlogListView(ListView):
-	model = models.BlogEntry
-	template_name = 'blogentry_list.html'
+    def get_queryset(self):
+        if not self.request.user.is_staff or not self.request.user.is_authenticated:
+            return BlogEntry.objects.filter(visible=True).order_by('-publish_date')
+        else:
+            return BlogEntry.objects.all().order_by('-publish_date')
 
-	def get_queryset(self):
-		return super().get_queryset().filter(visible=True).order_by('-publish_date')
-		
+    def get_permissions(self):
+        if self.action in ['list', 'retrieve']:
+            permission_classes = [permissions.AllowAny]
+        else:
+            permission_classes = [permissions.IsAdminUser]
+        return [permission() for permission in permission_classes]
