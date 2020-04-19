@@ -9,19 +9,19 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <b-navbar-nav>
                 <li class="nav-item">
-                    <router-link class="nav-link" to="/">
+                    <router-link class="nav-link" :to="{name: 'Home'}">
                         <i class="fa fa-fw fa-home"></i>
                         Home
                     </router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link class="nav-link" to="projects">
+                    <router-link class="nav-link" :to="{name: 'Projects'}">
                         <i class="fa fa-fw fa-flask"></i>
                         Projects
                     </router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link class="nav-link" to="blog">
+                    <router-link class="nav-link" :to="{name: 'Blog'}">
                         <i class="fa fa-fw fa-feed"></i>
                         Blog
                     </router-link>

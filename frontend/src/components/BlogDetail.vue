@@ -2,12 +2,17 @@
     <div>
         <div class="card w-100">
             <div class="card-header">
-                <h1><strong>{{ entry.title }}</strong></h1>
+                <h3 style="text-align: center"><strong>{{ entry.title }}</strong></h3>
             </div>
             <div class="card-body">
-                <p class="card-text">{{ entry.entry }}</p>
+                <p class="card-text">
+                    <pre style="white-space: pre-wrap;">{{ entry.entry }}</pre>
+                </p>
             </div>
             <div class="card-footer text-muted">
+                <router-link class="btn btn-dark mr-2" :to="{name: 'Blog'}">
+                    <i class="fa fa-arrow-left fa-w"></i>
+                </router-link>
                 <a href="#" class="btn btn-dark">
                     Comment
                     <i class="fa fa-w fa-comments"></i>
