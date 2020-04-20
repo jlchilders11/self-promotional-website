@@ -14,8 +14,17 @@ class CommentSerializer(serializers.ModelSerializer):
                   ]
 
 
+class CommentReadSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Comment
+        fields = ['user_name',
+                  'comment',
+                  'publish_date',
+                  ]
+
 class BlogEntrySerializer(serializers.ModelSerializer):
-    comments = CommentSerializer(many=True, read_only=True)
+    comments = CommentReadSerializer(many=True, read_only=True)
 
     class Meta:
         model = BlogEntry

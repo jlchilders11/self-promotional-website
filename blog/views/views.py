@@ -39,7 +39,7 @@ class CommentViewSet(viewsets.ModelViewSet):
             return Comment.objects.all().order_by('-publish_date')
 
     def get_permissions(self):
-        if self.action in ['list', 'retrieve']:
+        if self.action in ['create']:
             permission_classes = [permissions.AllowAny]
         else:
             permission_classes = [permissions.IsAdminUser]
